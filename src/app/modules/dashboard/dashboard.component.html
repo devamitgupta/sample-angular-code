@@ -1,0 +1,70 @@
+<div class="bg-brand-line dash-main">
+  <div class="container">
+    <div class="dash-main-title">
+      <h4>Welcome back, {{firstName || ''}}!</h4>
+    </div>
+    <div class="dash-aside-area flex ai-start">
+      <div class="dash-aside mtm-profile">
+        <div class="profile-thumb">
+          <figure><img src="{{userAvatar}}" alt="{{userName}}" title="{{title}}"> </figure>
+          <p><strong> {{userName || ''}} </strong> {{title || ''}} </p>
+        </div>
+      </div>
+      <div class="dash-main">
+        <div class="flex title-row dash-overview-row">
+          <h3>Overview</h3>
+          <div class="right-cap-area">
+            <a class="active" href="javascript:void(0);">Week View</a>
+            <a href="javascript:void(0);">Task View</a>
+          </div>
+        </div>
+        <div class="card-row flex dash-cardrow">
+          <div class="card card-full">
+            <div class="card-title text-center">
+              <h6>Your Upcoming Week
+              </h6>
+              <p>Projects, Workflows & Tasks due each day</p>
+            </div>
+            <div class="card-body">
+              <div id="container">
+                <canvas id="bar-chart"></canvas>
+              </div>
+              <div id="js-legend" class="chart-legend"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title text-center">
+              <h6>Assigned Tasks </h6>
+              <p>Tasks that are assigned to you and other users</p>
+            </div>
+            <div class="card-body">
+              <canvas id="doughnut-chart" width="400" height="250"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <div class="flex title-row ai-center">
+            <h5> My Projects</h5>
+            <div class="right-cap-area">
+              <a class="txtd-btn" href="javascript:void(0);" [routerLink]="['/main/projects']">See all Projects</a>
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <div class="flex title-row ai-center">
+            <h5> My Tasks</h5>
+            <div class="right-cap-area">
+              <div class="inline-flex toggle-switch"> Table View
+                <div class="btn-switch-wrap">
+                  <input type="checkbox" class="btn-switch" id="chart">
+                  <label for="chart"> Gantt Chart </label>
+                </div>
+              </div>
+              <a class="txtd-btn" href="javascript:void(0);">See all Tasks</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

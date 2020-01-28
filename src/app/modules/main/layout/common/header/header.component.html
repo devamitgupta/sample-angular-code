@@ -1,0 +1,96 @@
+<div class="logowraps">
+  <a href="javascript:void(0);" class="side-panel-btn" (click)="openmenu()">
+    <svg width="20" height="18" id="icoOpen">
+      <path id="p1" d="M2,2 17,2" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+      <path id="p2" d="M2,8 17,8" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+      <path id="p3" d="M2,14 17,14" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+    </svg>
+  </a>
+  <a class="logo" href="javascript:void(0);"><img src="assets/images/logo2.png" alt=""></a>
+  <div class="page-nm">Dashboard</div>
+</div>
+<div class="container">
+  <nav class="">
+    <ul class="main-menu">
+      <li class="cnew-btn" *ngIf="permisionList?.project_project_create || permisionList?.task_task_create || permisionList?.workflow_workflow_create">
+        <a class="plus-icon" href="javascript:void(0);"><img src="assets/images/plus-square.svg" alt="" /></a>
+        <div class="cnew-content">
+          <p *ngIf="permisionList?.project_project_create && permisionList?.task_task_create && permisionList?.workflow_workflow_create">What would you like to create?<span> A <a href="javascript:void(0);">Project</a>, <a
+              href="javascript:void(0);">Workflow</a> or <a href="javascript:void(0);" >Task</a>?</span>
+          </p>
+          <p *ngIf="permisionList?.project_project_create && !permisionList?.task_task_create && permisionList?.workflow_workflow_create">What would you like to create?<span> A <a href="javascript:void(0);">Project</a> or <a
+            href="javascript:void(0);">Workflow</a>?</span>
+          </p>
+          <p *ngIf="permisionList?.project_project_create && permisionList?.task_task_create && !permisionList?.workflow_workflow_create">What would you like to create?<span> A <a href="javascript:void(0);">Project</a> or <a href="javascript:void(0);" >Task</a>?</span>
+          </p>
+          <p *ngIf="!permisionList?.project_project_create && permisionList?.task_task_create && permisionList?.workflow_workflow_create">What would you like to create?<span> A <a href="javascript:void(0);">Workflow</a> or <a href="javascript:void(0);" >Task</a>?</span>
+          </p>
+          <p *ngIf="!permisionList?.project_project_create && !permisionList?.task_task_create && permisionList?.workflow_workflow_create">You like to create<span> A <a href="javascript:void(0);">Workflow</a>?</span>
+          </p>
+          <p *ngIf="!permisionList?.project_project_create && permisionList?.task_task_create && !permisionList?.workflow_workflow_create">You like to create<span> A <a href="javascript:void(0);" >Task</a>?</span>
+          </p>
+          <p *ngIf="permisionList?.project_project_create && !permisionList?.task_task_create && !permisionList?.workflow_workflow_create">You like to create<span> A <a href="javascript:void(0);">Project</a>?</span>
+          </p>
+        </div>
+      </li>
+      <li><a href="javascript:void(0);">PROJECTS</a></li>
+      <li><a href="javascript:void(0);">WORKFLOWS</a></li>
+      <li><a href="javascript:void(0);">TASKS</a></li>
+    </ul>
+  </nav>
+</div>
+<div class="right-header-wrap">
+  <ul class="flex right-main-nav">
+    <li (click)="isSearching = !isSearching">
+      <a [routerLink]="[isSearching ? '/main/dashboard' : '/main/search']" href="javascript:void(0);">
+        <img src="assets/images/search_close.svg" alt="" *ngIf="isSearching">
+        <img src="assets/images/search-Icon.svg" alt=""  *ngIf="!isSearching">
+      </a> 
+    </li>
+    <li class="notify-view"> <a href="javascript:void(0);">
+      <img (click)="showNotifications();" src="assets/images/ProxyAssets/DashboardAssets/Bell-Icon.svg" alt="notification"></a>
+      <div class="notify-wrap notification-list" [class.show]="showNotification">
+        <div class="notify-list">
+          <span class="sm-text flex">New</span>
+          <div class="notify-item notification unread">
+            <figure><img src="{{userAvatar}}" alt=""></figure>
+            <div class="notify-caption flex">
+              <p><strong>Grayson Fellows</strong> assigned the task <strong>Sign the NDA to you</strong></p>
+              <div class="flex ai-center m-0 sm-div">
+                <span class="noti-prior-box low"></span> 
+                <span class="time opacity6">30m</span>
+            </div>               
+            </div>
+          </div>
+          <div class="notify-item notification unread">
+            <figure><img src="assets/images/n-folder.svg" alt=""></figure>
+            <div class="notify-caption flex">
+              <p><strong>Grayson Fellows</strong> assigned the task <strong>Sign the NDA to you</strong></p>
+              <div class="flex ai-center m-0 sm-div">
+                <span class="noti-prior-box high"></span> 
+                <span class="time opacity6">9h</span>
+            </div>               
+            </div>
+          </div>
+          <span class="sm-text flex">Older</span>
+          <div class="notify-item notification">
+            <figure><img src="assets/images/n-task.svg" alt=""></figure>
+            <div class="notify-caption flex">
+              <p><strong>Grayson Fellows</strong> assigned the task <strong>Sign the NDA to you</strong></p>
+              <div class="flex ai-center m-0 sm-div">
+                <span class="noti-prior-box medium"></span> 
+                <span class="time opacity6">Yesterday 03:12 PM</span>
+            </div>               
+            </div>
+          </div>
+        </div>
+        <button type="button" class="see-all" (click)="notifications()">See all</button>
+      </div>
+    </li>
+    <li class="profile-view">
+      <a class="user-icon" href="javascript:void(0);">
+        <figure><img src="{{userAvatar}}" alt=""></figure>
+      </a>
+    </li>
+  </ul>
+</div>
